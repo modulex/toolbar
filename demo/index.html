@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+    <title>toolbar@1.0.0 demo</title>
+</head>
+<body>
+<h1 style="text-align: center">toolbar@1.0.0 demo</h1>
+<script src="/mx_modules/modulex-debug.js"></script>
+<script src="/mx_modules/ua-debug.js"></script>
+<script src="/mx_modules/feature-debug.js"></script>
+<script src="/mx_modules/meta.js"></script>
+<link href="/mx_modules/css/base.css" rel="stylesheet"/>
+<link href="/mx_modules/css/tables.css" rel="stylesheet"/>
+<link href="/mx_modules/button/assets/dpl.css" rel="stylesheet"/>
+<link href="/mx_modules/menu/assets/dpl.css" rel="stylesheet"/>
+<link href="/mx_modules/menubutton/assets/dpl.css" rel="stylesheet"/>
+<link href="/build/toolbar/assets/dpl.css" rel="stylesheet"/>
+<script>
+    var isBuild = location.href.indexOf('build') !== -1;
+    require.config({
+        base: '/mx_modules',
+        packages: {
+            'toolbar': {
+                filter: isBuild ? 'debug' : '',
+                base: isBuild ? '/build/toolbar' : '/lib/toolbar'
+            }
+        }
+    });
+    require('toolbar', function (toolbar) {
+        //  TODO with toolbar
+    });
+</script>
+<div>
+    <h1>
+        Toolbar For KISSY
+    </h1>
+
+    <div style="height: 80px"></div>
+
+
+    <div id="container">
+
+    </div>
+</div>
+<script>
+    require("toolbar,button,menubutton", function (Toolbar) {
+        var t = new Toolbar({
+            render: "#container",
+            children: [
+                {
+                    content: "menu-button",
+                    collapseOnClick: true,
+                    xclass: 'menu-button',
+                    menu: {
+                        children: [
+                            {
+                                content: 'item1',
+                                xclass: 'submenu',
+                                menu: {
+                                    children: [
+                                        {
+                                            content: 'item1-1'
+                                        },
+                                        {
+                                            content: 'item1-2'
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                content: 'item2'
+                            }
+                        ]
+                    }
+                },
+                {
+                    content: "menu-button3",
+                    //collapseOnClick:true,
+                    xclass: 'menu-button',
+                    menu: {
+                        children: [
+                            {
+                                content: 'item3',
+                                xclass: 'submenu',
+                                menu: {
+                                    children: [
+                                        {
+                                            content: 'item3-1'
+                                        },
+                                        {
+                                            content: 'item3-2'
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                content: 'item4'
+                            }
+                        ]
+                    }
+                },
+//                {
+//                    xclass:'separator'
+//                },
+                {
+                    content: 'button',
+                    checkable: true
+                },
+                {
+                    content: "menu-button2",
+                    xclass: 'menu-button',
+                    collapseOnClick: true,
+                    menu: {
+                        children: [
+                            {
+                                content: 'item2-1'
+                            },
+                            {
+                                content: 'item2-2'
+                            }
+                        ]
+                    }
+                }
+            ]
+        }).render();
+
+        window.ksToolBar = t;
+
+        t.on("click", function (e) {
+            console.log("click : " + e.target.get("content"));
+        });
+
+
+        setInterval(function () {
+            console.log(t.get('highlightedItem'));
+        }, 2000);
+    });
+</script>
+</body>
+</html>

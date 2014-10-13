@@ -1,0 +1,1 @@
+modulex.config("requires",{"toolbar":["component/container","component/extension/delegate-children","util","node"]});
