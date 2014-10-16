@@ -172,6 +172,7 @@ toolbar = function (exports) {
     }
   }, {
     xclass: 'toolbar',
+    version: '1.0.1',
     ATTRS: {
       allowTextSelection: { value: true },
       focusable: { value: true },
