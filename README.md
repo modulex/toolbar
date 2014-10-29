@@ -1,6 +1,6 @@
 # toolbar
 
-
+ui toolbar
 
 [![toolbar](https://nodei.co/npm/modulex-toolbar.png)](https://npmjs.org/package/modulex-toolbar)
 [![NPM downloads](http://img.shields.io/npm/dm/modulex-toolbar.svg)](https://npmjs.org/package/modulex-toolbar)
